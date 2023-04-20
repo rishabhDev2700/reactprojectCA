@@ -12,7 +12,6 @@ function Items() {
     const querySnapshot = await getDocs(collection(db, "items"));
     querySnapshot.forEach((doc) => {
       console.log(doc.id, " => ", doc.data());
-    //   data.push(<tr key={doc.id}><td>{doc.id}</td><td>{doc.data().name}</td><td>{doc.data().qnty}</td><td>{doc.data().supplier}</td><td>{doc.data().inStock}</td></tr>);
     data.push( <ListItem uid={doc.id} item={doc.data().name} quantity={doc.data().qnty} supplier={doc.data().supplier} stock={doc.data().inStock}/>)
     });
     setItems(data);

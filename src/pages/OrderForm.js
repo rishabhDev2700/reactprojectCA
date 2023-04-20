@@ -23,11 +23,11 @@ function OrderForm() {
       console.table(data);
       const document = collection(db, "client");
       await addDoc(document, data);
-      setErrors({...errors,status:"Successfully Added!"})
+      setErrors({...newErrors,status:"Successfully Added!"})
 
     } else {
       setErrors(newErrors);
-      setErrors({...errors,status:"Error Occurred!"})
+      setErrors({...newErrors,status:"Error Occurred!"})
 
     }
     console.table(errors);

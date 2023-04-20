@@ -14,18 +14,16 @@ function ClientForm() {
   const handleForm = async (e) => {
     e.preventDefault();
     const newErrors = validateForm();
-
     if (Object.keys(newErrors).length === 0) {
       console.log("Adding document");
       const data = { name, description, location };
       console.table(data);
       const document = collection(db, "client");
       await addDoc(document, data);
-      setErrors({...errors,status:"Successfully Added!"})
+      setErrors({...newErrors,status:"Successfully Added!"})
 
     } else {
       setErrors(newErrors);
-      setErrors({...errors,status:"Error Occurred!"})
 
     }
     console.table(errors);

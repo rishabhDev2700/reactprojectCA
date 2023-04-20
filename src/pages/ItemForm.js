@@ -19,11 +19,11 @@ function ItemForm() {
       console.table(data);
       const document = collection(db, "items");
       await addDoc(document, data);
-      setErrors({...errors,status:"Added Successfully!"})
+      setErrors({...newErrors,status:"Added Successfully!"})
 
     } else {
-      setErrors({...errors,status:"Error Occurred!"})
-
+      console.log("Error")
+      setErrors(newErrors);
     }
   };
   const validate = ()=>{
@@ -31,11 +31,11 @@ function ItemForm() {
     if (!name ) {
       newerrors.name = "Name Required!!!";
     }
-    if (!qnty) {
-      newerrors.description = "Description Required!!!";
+    if (qnty<1) {
+      newerrors.qnty = "Qnty must be more than 0!!!";
     }
     if (!supplier) {
-      newerrors.location = "Location Required!!!";
+      newerrors.supplier = "Supplier Required!!!";
     }
     return newerrors;
   }
@@ -58,7 +58,7 @@ function ItemForm() {
         placeholder="Quantity"
       />
       <span>{errors.qnty}</span>
-      <Label htmlFor="supplier">Qnty</Label>
+      <Label htmlFor="supplier">Supplier</Label>
 
       <Input
         id="supplier"

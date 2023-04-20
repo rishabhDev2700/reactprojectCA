@@ -17,10 +17,10 @@ function CategoryForm() {
       console.table(data);
       const document = collection(db, 'category');
       await addDoc(document, data);
-      setErrors({...errors,status:"Successfully Added!"})
+      setErrors({...newErrors,status:"Successfully Added!"})
     } else {
+      console.log("Error")
       setErrors(newErrors);
-      setErrors({...errors,status:"Error Occured!"})
 
     }
     
